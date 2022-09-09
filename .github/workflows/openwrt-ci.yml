@@ -44,15 +44,14 @@ jobs:
           sudo -E apt-get clean
           - name: 同步最新的源码
 
-          # - 名称：自动更新
+          - 名称：自动更新
           工作目录：./openwrt
           运行：|
           git remote add openwrt https://github.com/coolsnowwolf/lede.git
           git pull openwrt master
           git remote -v
-          - name: luci-app-vssr
-
-          # - 名称：vssr
+          
+          - 名称：vssr
           工作目录：./openwrt
           运行：|
           cd package
@@ -178,15 +177,16 @@ jobs:
           CONFIG_PACKAGE_luci-app-webadmin=y
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
+          CONFIG_PACKAGE_luci-app-luci-app-vssr=y
           EOF
 
           # LuCI主题:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-theme-argon=y
-          CONFIG_PACKAGE_luci-theme-netgear=y
-          EOF
+          # cat >> .config <<EOF
+          # CONFIG_PACKAGE_luci-theme-argon=y
+          # CONFIG_PACKAGE_luci-theme-netgear=y
+          # EOF
 
-          # 常用软件包:
+          常用软件包:
           cat >> .config <<EOF
           CONFIG_PACKAGE_curl=y
           CONFIG_PACKAGE_htop=y
