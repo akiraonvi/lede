@@ -44,11 +44,17 @@ jobs:
           sudo -E apt-get clean
           - name: 同步最新的源码
 
+          # - 名称：自动更新
+          工作目录：./openwrt
+          运行：|
           git remote add openwrt https://github.com/coolsnowwolf/lede.git
           git pull openwrt master
           git remote -v
           - name: luci-app-vssr
 
+          # - 名称：vssr
+          工作目录：./openwrt
+          运行：|
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
